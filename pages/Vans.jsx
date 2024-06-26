@@ -10,15 +10,14 @@ export default function Vans() {
             .then(data => setVans(data.vans))
     },[])
     
-    const Van = ({imageUrl, name, price, type}) =>
-        <div className="van-item" key={name}>
-            <img src={imageUrl} alt={name} className="van-image"/>
-            <h2>{name}</h2>
-            <div className="van-price-wrap">
-                <p>${price}</p>
-                <p>/day</p>
+    const Van = ({imageUrl, name, price, type, id}) =>
+        <div key={van.id} className="van-tile">
+            <img src={imageUrl} alt={`a ${name} out somewhere`} />
+            <div className="van-info">
+                <h3>{name}</h3>
+                <p>${price}<span>/day</span></p>
             </div>
-            <p className="van-type">{type}</p>
+            <i className={`van-type ${type} selected`}>{type}</i>
         </div>
     
     return (
