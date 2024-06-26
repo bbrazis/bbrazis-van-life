@@ -12,12 +12,14 @@ export default function Vans() {
     
     const Van = ({imageUrl, name, price, type, id}) =>
         <div key={id} className="van-tile">
-            <img src={imageUrl} alt={`a ${name} out somewhere`} />
-            <div className="van-info">
-                <h3>{name}</h3>
-                <p>${price}<span>/day</span></p>
-            </div>
-            <i className={`van-type ${type} selected`}>{type}</i>
+            <Link to={`/vans/${id}`}>
+                <img src={imageUrl} alt={`a ${name} out somewhere`} />
+                <div className="van-info">
+                    <h3>{name}</h3>
+                    <p>${price}<span>/day</span></p>
+                </div>
+                <i className={`van-type ${type} selected`}>{type}</i>
+            </Link>
         </div>
     
     return (
