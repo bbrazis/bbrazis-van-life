@@ -11,7 +11,7 @@ export default function Vans() {
     },[])
     
     const Van = ({imageUrl, name, price, type, id}) =>
-        <div key={van.id} className="van-tile">
+        <div key={id} className="van-tile">
             <img src={imageUrl} alt={`a ${name} out somewhere`} />
             <div className="van-info">
                 <h3>{name}</h3>
