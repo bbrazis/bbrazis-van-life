@@ -21,11 +21,11 @@ export default function Vans() {
         </div>
     
     return (
-        <main>
-        <h1>Vans page goes here 🚐</h1>
-        <div className="van-grid">
-            {vans.length > 0 && vans.map(Van)}
+        <div className="van-list-container">
+            <h1>Explore our van options</h1>
+            <div className="van-list">
+                {vans.length > 0 && vans.map(Van)}
+            </div>
         </div>
-        </main>
     )
 }
