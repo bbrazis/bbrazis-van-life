@@ -12,10 +12,13 @@ export default function Vans() {
     
     const Van = ({imageUrl, name, price, type, id}) =>
         <div key={id} className="van-tile">
-            <Link to={`/vans/${id}`}>
+            <Link 
+                to={`/vans/${id}`}
+                aria-label={`View details for ${van.name}, priced at $${van.price} per day`}
+            >
                 <img src={imageUrl} alt={`a ${name} out somewhere`} />
                 <div className="van-info">
-                    <h3>{name}</h3>
+                    <p className='van-title'>{name}</p>
                     <p>${price}<span>/day</span></p>
                 </div>
                 <i className={`van-type ${type} selected`}>{type}</i>
