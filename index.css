@@ -63,6 +63,22 @@ header a:hover {
     transform: translate(1px, 1px);
 }
 
+main {
+    margin-bottom: 84px;
+}
+
+footer {
+    background-color: #161616;
+    color: #AAAAAA;
+    height: 74px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    font-weight: 500;
+}
+
 /*** HOME PAGE ***/
 .home-container {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.png") no-repeat center center;
