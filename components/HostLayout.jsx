@@ -10,7 +10,7 @@ export default function HostLayout() {
 
     return (
         <>
-            <nav>
+            <nav className="host-nav">
                 <NavLink 
                     to="/host"
                     end
