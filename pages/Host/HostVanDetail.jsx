@@ -4,7 +4,7 @@ import { useParams, Link, Outlet, NavLink } from "react-router-dom"
 export default function HostVanDetail() {
     const { id } = useParams()
     const [currentVan, setCurrentVan] = React.useState(null)
-    const activeStyle = {
+    const activeStyles = {
         fontWeight: 'bold',
         textDecoration: 'underline',
         color: '#161616'
