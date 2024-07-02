@@ -49,7 +49,7 @@ export default function Vans() {
                 <button className="van-type clear-filters" onClick={() => clearSearch()}>Clear filter</button>
             </div>
             <div className="van-list">
-                {displayedVans.length > 0 && vanElements}
+                {vanElements}
             </div>
         </div>
     )
