@@ -16,23 +16,19 @@ export default function Vans() {
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
         : vans
-    
-    const Van = ({imageUrl, name, price, type, id}) =>
-        <div key={id} className="van-tile">
-            <Link 
-                to={`/vans/${id}`}
-                aria-label={`View details for ${name}, priced at $${price} per day`}
-            >
-                <img src={imageUrl} alt={`a ${name} out somewhere`} />
+
+    const vanElements = displayedVans.map(van => (
+        <div key={van.id} className="van-tile">
+            <Link to={`/vans/${van.id}`}>
+                <img src={van.imageUrl} alt={`${van.name} camped out in the wilderness`}/>
                 <div className="van-info">
-                    <p className='van-title'>{name}</p>
-                    <p>${price}<span>/day</span></p>
+                    <h3>{van.name}</h3>
+                    <p>${van.price}<span>/day</span></p>
                 </div>
-                <i className={`van-type ${type} selected`}>{type}</i>
+                <i className={`van-type ${van.type} selected`}>{van.type}</i>
             </Link>
         </div>
-    
-    const vanEl = displayedVans.map(Van)
+    ))
 
     function searchFor(key, value){
         const obj = { key: value }
@@ -53,7 +49,7 @@ export default function Vans() {
                 <button className="van-type clear-filters" onClick={() => clearSearch()}>Clear filter</button>
             </div>
             <div className="van-list">
-                {displayedVans.length > 0 && vanEl}
+                {displayedVans.length > 0 && vanElements}
             </div>
         </div>
     )
