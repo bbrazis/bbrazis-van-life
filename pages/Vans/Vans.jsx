@@ -32,6 +32,11 @@ export default function Vans() {
             </Link>
         </div>
     
+    function searchFor(key, value){
+        const obj = { key: value }
+        setSearchParams(obj)
+    }
+
     return (
         <div className="van-list-container">
             <h1>Explore our van options</h1>
