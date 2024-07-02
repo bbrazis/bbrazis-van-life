@@ -32,6 +32,8 @@ export default function Vans() {
             </Link>
         </div>
     
+    const vanEl = displayedVans.map(Van)
+
     function searchFor(key, value){
         const obj = { key: value }
         setSearchParams(obj)
@@ -51,7 +53,7 @@ export default function Vans() {
                 <button className="van-type clear-filters" onClick={() => clearSearch()}>Clear filter</button>
             </div>
             <div className="van-list">
-                {displayedVans.length > 0 && displayedVans.map(Van)}
+                {displayedVans.length > 0 && vanEl}
             </div>
         </div>
     )
