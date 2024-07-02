@@ -37,6 +37,10 @@ export default function Vans() {
         setSearchParams(obj)
     }
 
+    function clearSearch() {
+        setSearchParams({})
+    }
+
     return (
         <div className="van-list-container">
             <h1>Explore our van options</h1>
@@ -47,7 +51,7 @@ export default function Vans() {
                 <button className="van-type clear-filters" onClick={() => clearSearch()}>Clear filter</button>
             </div>
             <div className="van-list">
-                {vans.length > 0 && displayedVans.map(Van)}
+                {displayedVans.length > 0 && displayedVans.map(Van)}
             </div>
         </div>
     )
