@@ -18,6 +18,19 @@ import HostVanPhotos from './pages/Host/HostVanPhotos'
 
 import './server'
 
+function getStyleSheet(unique_title){
+  for (const sheet of document.styleSheets){
+    if(sheet.title === unique_title){
+      console.log('stylesheet found!')
+      return sheet
+    } else {
+      console.log('nope nothing here')
+    }
+  }
+}
+
+getStyleSheet("index")
+
 function App() {
   return (
     <BrowserRouter>
