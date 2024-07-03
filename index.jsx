@@ -18,12 +18,13 @@ import HostVanPhotos from './pages/Host/HostVanPhotos'
 
 import './server'
 
-const stylesheets = document.styleSheets
-for(const sheet of stylesheets){
-  if(sheet.cssRules){
-    return sheet.cssRules
+function findSelector(styleName){
+  for(const sheet of document.styleSheets){
+    const rules = sheet.cssRules
+    console.log(rules)
   }
 }
+findSelector()
 
 function App() {
   return (
