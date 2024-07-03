@@ -21,7 +21,7 @@ import './server'
 function findSelector(styleName){
   for(const sheet of document.styleSheets){
     const rules = sheet.cssRules
-    if(rules){
+    if(rules != undefined && rules != null){
       console.log(rules)
     }
   }
