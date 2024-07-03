@@ -18,16 +18,6 @@ import HostVanPhotos from './pages/Host/HostVanPhotos'
 
 import './server'
 
-function findSelector(styleName){
-  for(const sheet of document.styleSheets){
-    const rules = sheet.cssRules
-    if(rules != undefined && rules != null){
-      console.log(rules)
-    }
-  }
-}
-findSelector()
-
 function App() {
   return (
     <BrowserRouter>
