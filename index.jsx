@@ -18,7 +18,7 @@ import HostVanPhotos from './pages/Host/HostVanPhotos'
 
 import './server'
 
-document.styleSheets[0].cssRules.selectorText('header')
+console.log(document.styleSheets[0].cssRules)
 
 function App() {
   return (
