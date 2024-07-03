@@ -20,7 +20,7 @@ import './server'
 
 function getStyleSheet(unique_title){
   for (const sheet of document.styleSheets){
-    return(sheet)
+    return(sheet.cssRules)
     if(sheet.cssRules.contains(unique_title)){
       console.log('stylesheet found!')
       return sheet
