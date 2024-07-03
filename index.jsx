@@ -18,17 +18,7 @@ import HostVanPhotos from './pages/Host/HostVanPhotos'
 
 import './server'
 
-function getStyleSheet(unique_title){
-  for (const sheet of document.styleSheets){
-    return(sheet.cssRules)
-    if(sheet.cssRules.contains(unique_title)){
-      console.log('stylesheet found!')
-      return sheet
-    }
-  }
-}
-
-getStyleSheet("index")
+document.styleSheets[0].cssRules.selectorText('header')
 
 function App() {
   return (
