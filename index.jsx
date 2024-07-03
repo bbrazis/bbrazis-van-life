@@ -18,7 +18,12 @@ import HostVanPhotos from './pages/Host/HostVanPhotos'
 
 import './server'
 
-console.log(document.styleSheets)
+const stylesheets = document.styleSheets
+for(const sheet of stylesheets){
+  if(sheet.cssRules){
+    return sheet.cssRules
+  }
+}
 
 function App() {
   return (
