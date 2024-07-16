@@ -69,8 +69,8 @@ export async function loginUser(creds) {
             status: res.status
         }
     }
-
-    setCookie('login', data.authToken,7)
+    console.log(data.authToken)
+    setCookie('login', data.authToken, 7)
 }
 
 export async function checkAuth() {
