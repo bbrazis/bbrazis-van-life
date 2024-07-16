@@ -82,12 +82,13 @@ export async function checkAuth() {
             Authorization: `Bearer ${token}`
         }
     }
-
-    const res = await fetch(`${userAuth}/auth/me`, options)
-    const data = await res.json()
-
-    if(data.id) {
-        return true
+    if(token){
+        const res = await fetch(`${userAuth}/auth/me`, options)
+        const data = await res.json()
+    
+        if(data.id) {
+            return true
+        }
     } else {
         return false
     }
