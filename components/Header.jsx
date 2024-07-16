@@ -6,7 +6,6 @@ import { setCookie } from "../api"
 export default function Header(){
     function fakeLogOut() {
         setCookie("login", "", 0)
-        localStorage.removeItem("login")
     }
 
     return (
