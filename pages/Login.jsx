@@ -18,7 +18,6 @@ export default function Login() {
         loginUser(loginFormData)
             .then(data => {
                 setError(null)
-                setCookie('login',true, 7)
                 navigate(from, { replace: true })
             })
             .catch(err => {
