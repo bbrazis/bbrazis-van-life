@@ -5,7 +5,7 @@ import { checkAuth } from "../api"
 export default async function AuthRequired() {
     const isLoggedIn = await checkAuth()
     const location = useLocation()
-    console.log(isLoggedIn)
+    console.log(await isLoggedIn)
     // if (!isLoggedIn.loggedIn) {
     //     return (
     //         <Navigate 
