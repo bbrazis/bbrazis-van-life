@@ -1,11 +1,11 @@
 import React from "react"
 import { Outlet, Navigate, useLocation } from "react-router-dom"
-import { checkAuth } from "../api"
+import { checkAuth, getCookie } from "../api"
 
 export default async function AuthRequired() {
-    const isLoggedIn = await checkAuth()
+    const isLoggedIn = getCookie('login')
     const location = useLocation()
-    console.log(await isLoggedIn)
+    
     if (!isLoggedIn) {
         return (
             <Navigate 
@@ -17,6 +17,6 @@ export default async function AuthRequired() {
                 replace
             />)
     }
-    
+
     return <Outlet />
 }
