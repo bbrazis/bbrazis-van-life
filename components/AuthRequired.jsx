@@ -2,8 +2,8 @@ import React from "react"
 import { Outlet, Navigate, useLocation } from "react-router-dom"
 import { checkAuth } from "../api"
 
-export default function AuthRequired() {
-    const isLoggedIn = checkAuth()
+export default async function AuthRequired() {
+    const isLoggedIn = await checkAuth()
     const location = useLocation()
     
     if (!isLoggedIn.loggedIn) {
