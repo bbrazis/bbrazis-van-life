@@ -6,7 +6,7 @@ export function getCookie(cookieName) {
     const cookieArr = decodedCookie.split(';')
     for(let i = 0; i < cookieArr.length; i++){
         let currentCookie = cookieArr[i]
-        while (cookieName.charAt(0) === ' ' || cookieName.charAt(1) === "=") {
+        while (cookieName.charAt(0) === ' ') {
             currentCookie = currentCookie.substring(1)
         }
         if(currentCookie.indexOf(cookieName) === 0){
@@ -87,6 +87,7 @@ export async function checkAuth() {
     const res = await fetch(`${userAuth}/auth/me`, options)
     const data = await res.json()
     if(data.id){
+        console.log('user found')
         return {
             loggedIn: true,
             id: data.id,
@@ -94,6 +95,7 @@ export async function checkAuth() {
             email: data.email
         }
     } else {
+        console.log('no user found')
         return {
             loggedIn: false
         }
