@@ -10,7 +10,7 @@ export function getCookie(cookieName) {
             currentCookie = currentCookie.substring(1)
         }
         if(currentCookie.indexOf(cookieName) === 0){
-            return currentCookie.substring(cookieName.length, currentCookie.length)
+            return currentCookie.substring(cookieName.length + 1, currentCookie.length)
         }
     }
     return ""
