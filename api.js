@@ -1,3 +1,5 @@
+const userAuth = 'https://x8ki-letl-twmt.n7.xano.io/api:-QKB4H52'
+
 export function getCookie(cookieName) {
     const name = `${cookieName}=`
     const decodedCookie = decodeURIComponent(document.cookie)
@@ -50,9 +52,14 @@ export async function getHostVans(id) {
 }
 
 export async function loginUser(creds) {
-    const res = await fetch("/api/login",
-        { method: "post", body: JSON.stringify(creds) }
-    )
+    let postOptions = {
+        method: "POST",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(creds)
+    }
+    const res = await fetch(`${userAuth}/auth/login`, postOptions)
     const data = await res.json()
 
     if (!res.ok) {
@@ -63,5 +70,5 @@ export async function loginUser(creds) {
         }
     }
 
-    return data
+    setCookie('login', data.authToken,7)
 }
