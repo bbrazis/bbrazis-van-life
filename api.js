@@ -10,7 +10,7 @@ export function getCookie(cookieName) {
             currentCookie = currentCookie.substring(1)
         }
         if(currentCookie.indexOf(cookieName) === 0){
-            return currentCookie.substring(cookieName.length + 1, currentCookie.length)
+            return currentCookie.substring(name.length, currentCookie.length)
         }
     }
     return ""
@@ -82,12 +82,11 @@ export async function checkAuth() {
             Authorization: `Bearer ${token}`
         }
     }
-    console.log(token)
 
     const res = await fetch(`${userAuth}/auth/me`, options)
     const data = await res.json()
+    
     if(data.id){
-        console.log('user found')
         return {
             loggedIn: true,
             id: data.id,
@@ -95,7 +94,6 @@ export async function checkAuth() {
             email: data.email
         }
     } else {
-        console.log('no user found')
         return {
             loggedIn: false
         }
