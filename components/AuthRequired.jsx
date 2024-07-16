@@ -3,9 +3,10 @@ import { Outlet, Navigate, useLocation } from "react-router-dom"
 import { checkAuth, getCookie } from "../api"
 
 export default function AuthRequired() {
-    const isLoggedIn = checkAuth()
+    
+    const isLoggedIn = checkAuth() || getCookie('login')
     const location = useLocation()
-    console.log(isLoggedIn)
+    
     if (!isLoggedIn) {
         return (
             <Navigate 
