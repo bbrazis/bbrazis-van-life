@@ -82,6 +82,7 @@ export async function checkAuth() {
             Authorization: `Bearer ${token}`
         }
     }
+    console.log(token)
 
     const res = await fetch(`${userAuth}/auth/me`, options)
     const data = await res.json()
