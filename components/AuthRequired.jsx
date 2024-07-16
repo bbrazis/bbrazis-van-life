@@ -1,12 +1,12 @@
 import React from "react"
 import { Outlet, Navigate, useLocation } from "react-router-dom"
-import { getCookie } from "../api"
+import { checkAuth } from "../api"
 
 export default function AuthRequired() {
-    const isLoggedIn = getCookie("login")
+    const isLoggedIn = checkAuth()
     const location = useLocation()
     
-    if (!isLoggedIn) {
+    if (!isLoggedIn.loggedIn) {
         return (
             <Navigate 
                 to="/login" 
