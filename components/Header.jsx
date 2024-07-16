@@ -9,6 +9,14 @@ export default function Header(){
                 <NavLink to="host" className={({isActive}) => isActive ? 'link-active': null}>Host</NavLink>
                 <NavLink to="about" className={({isActive}) => isActive ? 'link-active': null}>About</NavLink>
                 <NavLink to="vans" className={({isActive}) => isActive ? 'link-active': null}>Vans</NavLink>
+                <Link to="login" className="login-link">
+                    <img
+                        src={imageUrl}
+                        alt="account icon"
+                        className="login-icon"
+                    />
+                </Link>
+                <button onClick={fakeLogOut}>X</button>
             </nav>
         </header>
     )
