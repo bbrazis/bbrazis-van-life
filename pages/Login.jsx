@@ -12,11 +12,12 @@ export default function Login() {
 
     const from = location.state?.from || '/host'
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
         setStatus('submitting')
-        loginUser(loginFormData)
+        await loginUser(loginFormData)
             .then(data => {
+                console.log('logging in')
                 setError(null)
                 navigate(from, { replace: true })
             })
