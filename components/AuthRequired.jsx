@@ -27,10 +27,13 @@ export default function AuthRequired() {
         }
     }
 
+    React.useEffect(()=> {
+        getStatus()
+    },[loading])
+
     return (
         <>
-            { loading && <h1>Loading</h1> }
-            { getStatus() }
+            { loading && <h1>Loading</h1>  }
         </>
     )
 }
