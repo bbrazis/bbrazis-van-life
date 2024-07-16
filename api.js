@@ -86,5 +86,6 @@ export async function checkAuth() {
     const res = await fetch(`${userAuth}/auth/me`, options)
     const data = await res.json()
 
-    data.id ? true : false
+    if(data.id) return true
+    else return false
 }
