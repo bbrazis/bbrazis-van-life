@@ -1,10 +1,12 @@
 import React from "react"
 import { Link, NavLink } from "react-router-dom"
 import imageUrl from '../assets/images/avatar-icon.png'
+import { setCookie } from "../api"
 
 export default function Header(){
     function fakeLogOut() {
-        localStorage.removeItem("loggedin")
+        setCookie("login", "", 0)
+        localStorage.removeItem("login")
     }
 
     return (
