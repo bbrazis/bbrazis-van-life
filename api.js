@@ -1,3 +1,26 @@
+export function getCookie(cookieName) {
+    const name = `${cookieName}=`
+    const decodedCookie = decodeURIComponent(document.cookie)
+    const cookieArr = decodedCookie.split(';')
+    for(let i = 0; i < cookieArr.length; i++){
+        let currentCookie = cookieArr[i]
+        while (cookieName.charAt(0) === ' ') {
+            currentCookie = currentCookie.substring(1)
+        }
+        if(currentCookie.indexOf(cookieName) === 0){
+            return currentCookie.substring(cookieName.length, currentCookie.length)
+        }
+    }
+    return ""
+}
+
+export function setCookie(cookieName, cookieValue, exdays) {
+    const date = new Date()
+    date.setTime(date.getTime() + (exdays*24*60*60*1000))
+    const expires = `expires=${date.toUTCString()}`
+    document.cookie = `${cookieName}=${cookieValue};${expires};path=/`
+}
+
 export async function getVans(id) {
     const url = id ? `/api/vans/${id}` : "/api/vans"
     const res = await fetch(url)

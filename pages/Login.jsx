@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { loginUser } from '../api'
+import { loginUser, setCookie } from '../api'
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
@@ -18,7 +18,7 @@ export default function Login() {
         loginUser(loginFormData)
             .then(data => {
                 setError(null)
-                document.cookie = `loggedin=true;expires;path=/`
+                setCookie('login',true, 7)
                 navigate(from, { replace: true })
             })
             .catch(err => {

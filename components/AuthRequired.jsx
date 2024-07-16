@@ -1,8 +1,9 @@
 import React from "react"
 import { Outlet, Navigate, useLocation } from "react-router-dom"
+import { getCookie } from "../api"
 
 export default function AuthRequired() {
-    const isLoggedIn = localStorage.getItem("loggedin")
+    const isLoggedIn = getCookie("login")
     const location = useLocation()
     
     if (!isLoggedIn) {
