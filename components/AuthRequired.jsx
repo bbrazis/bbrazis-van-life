@@ -3,21 +3,34 @@ import { Outlet, Navigate, useLocation } from "react-router-dom"
 import { checkAuth, getCookie } from "../api"
 
 export default function AuthRequired() {
-    
-    const isLoggedIn = checkAuth() || getCookie('login')
-    const location = useLocation()
-    
-    if (!isLoggedIn) {
-        return (
-            <Navigate 
-                to="/login" 
-                state={{
-                    message: "You must log in first",
-                    from: location.pathname
-                }} 
-                replace
-            />)
+    const [loading, setLoading] = React.useState(true)
+
+    async function getStatus() {
+        const isLoggedIn = await checkAuth()
+        const location = useLocation()
+
+        if(!isLoggedIn) {
+            setLoading(false)
+            return (
+                <Navigate 
+                    to="/login" 
+                    state={{
+                        message: "You must log in first",
+                        from: location.pathname
+                    }} 
+                    replace
+                />
+            )
+        } else {
+            setLoading(false)
+            return <Outlet />
+        }
     }
 
-    return <Outlet />
+    return (
+        <>
+            { loading && <h1>Loading</h1> }
+            { getStatus() }
+        </>
+    )
 }
