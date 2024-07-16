@@ -6,7 +6,7 @@ export function getCookie(cookieName) {
     const cookieArr = decodedCookie.split(';')
     for(let i = 0; i < cookieArr.length; i++){
         let currentCookie = cookieArr[i]
-        while (cookieName.charAt(0) === ' ' || cookieName.charAt(0) === "=") {
+        while (cookieName.charAt(0) === ' ' || cookieName.charAt(1) === "=") {
             currentCookie = currentCookie.substring(1)
         }
         if(currentCookie.indexOf(cookieName) === 0){
