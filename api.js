@@ -69,7 +69,7 @@ export async function loginUser(creds) {
             status: res.status
         }
     }
-    console.log(data.authToken)
+
     setCookie('login', data.authToken, 7)
 }
 
@@ -85,17 +85,6 @@ export async function checkAuth() {
 
     const res = await fetch(`${userAuth}/auth/me`, options)
     const data = await res.json()
-    
-    if(data.id){
-        return {
-            loggedIn: true,
-            id: data.id,
-            name: data.name,
-            email: data.email
-        }
-    } else {
-        return {
-            loggedIn: false
-        }
-    }
+
+    data.id ? true : false
 }
