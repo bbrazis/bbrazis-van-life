@@ -5,7 +5,7 @@ import { checkAuth, getCookie } from "../api"
 export default function AuthRequired() {
     const isLoggedIn = checkAuth()
     const location = useLocation()
-    
+    console.log(isLoggedIn)
     if (!isLoggedIn) {
         return (
             <Navigate 
