@@ -6,9 +6,7 @@ export default function HostVans() {
     const [vans, setVans] = React.useState([])
 
     React.useEffect(() => {
-        (async ()=> {
-            console.log(await getHostVans())
-        })
+        console.log(getHostVans())
     }, [])
 
     const hostVansEls = vans.map(van => (
