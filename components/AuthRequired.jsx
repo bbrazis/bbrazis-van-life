@@ -4,7 +4,8 @@ import { getCookie } from "../api"
 
 export default function AuthRequired() {
     const isLoggedIn = getCookie('login')
-
+    const location = useLocation()
+    
     if(!isLoggedIn) {
         return (
             <Navigate 
