@@ -51,6 +51,7 @@ export default function Login() {
                 <input
                     name="email"
                     onChange={handleChange}
+                    id="email"
                     type="email"
                     placeholder="Email address"
                     value={loginFormData.email}
@@ -58,6 +59,7 @@ export default function Login() {
                 <input
                     name="password"
                     onChange={handleChange}
+                    id="password"
                     type="password"
                     placeholder="Password"
                     value={loginFormData.password}
