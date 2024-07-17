@@ -12,13 +12,17 @@ export default function HostVanDetail() {
     }
 
     React.useEffect(() => {
-        console.log(getHostVans(id))
+        async () => {
+            const res = await getHostVans(id)
+            const data = await res.json()
+            setCurrentVan(data)
+        }
     }, [])
 
     if (!currentVan) {
         return <h1>Loading...</h1>
     }
-        
+    console.log(currentVan)
     return (
         <section>
             <Link
