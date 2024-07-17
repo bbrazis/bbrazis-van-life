@@ -4,13 +4,10 @@ import { getHostVans } from "../../api"
 
 export default function HostVans() {
     const [vans, setVans] = React.useState([])
-    const data = getHostVans()
+    
     React.useEffect(() => {
-        async () => {
-            if(data){
-                console.log(data)
-            }
-        }
+        getHostVans()
+            .then(data => setVans(data))
     }, [])
 
     const hostVansEls = vans.map(van => (
