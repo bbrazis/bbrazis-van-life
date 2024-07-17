@@ -98,9 +98,16 @@ export async function checkAuth() {
         const data = await res.json()
     
         if(data.id) {
-            return true
+            return {
+                loggedIn: true,
+                user: data.name,
+                userId: data.id,
+                userEmail: data.email
+            }
         }
     } else {
-        return false
+        return {
+            loggedIn: false
+        }
     }
 }
