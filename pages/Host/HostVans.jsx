@@ -6,9 +6,9 @@ export default function HostVans() {
     const [vans, setVans] = React.useState([])
 
     React.useEffect(() => {
-        fetch("/api/host/vans")
-            .then(res => res.json())
-            .then(data => setVans(data.vans))
+        async ()=> {
+            console.log(await getHostVans())
+        }
     }, [])
 
     const hostVansEls = vans.map(van => (
