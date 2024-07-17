@@ -13,9 +13,7 @@ export default function HostVanDetail() {
 
     React.useEffect(() => {
         async () => {
-            const res = await getHostVans(id)
-            const data = await res.json()
-            setCurrentVan(data)
+            setCurrentVan(await getHostVans(id))
         }
     }, [])
 
