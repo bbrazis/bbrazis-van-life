@@ -17,7 +17,6 @@ export default function Login() {
         setStatus('submitting')
         await loginUser(loginFormData)
             .then(data => {
-                console.log('logging in')
                 setError(null)
                 navigate(from, { replace: true })
             })

@@ -22,7 +22,7 @@ export function setCookie(cookieName, cookieValue, exdays) {
     const date = new Date()
     date.setTime(date.getTime() + (exdays*24*60*60*1000))
     const expires = `expires=${date.toUTCString()}`
-    document.cookie = `${cookieName}=${cookieValue};SameSite=Lax;${expires};path=/`
+    document.cookie = `${cookieName}=${cookieValue};SameSite=Lax;secure;${expires};path=/`
 }
 
 export async function getVans(id) {
@@ -70,6 +70,7 @@ export async function loginUser(creds) {
         },
         body: JSON.stringify(creds)
     }
+    
     const res = await fetch(`${userAuth}/auth/login`, postOptions)
     const data = await res.json()
 
