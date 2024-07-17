@@ -1,39 +1,22 @@
 import React from "react"
 import { Outlet, Navigate, useLocation } from "react-router-dom"
-import { checkAuth, getCookie } from "../api"
+import { getCookie } from "../api"
 
 export default function AuthRequired() {
-    const [loading, setLoading] = React.useState(true)
+    const isLoggedIn = getCookie('login') || null
 
-    async function getStatus() {
-        const isLoggedIn = await checkAuth()
-        const location = useLocation()
-
-        if(!isLoggedIn) {
-            setLoading(false)
-            return (
-                <Navigate 
-                    to="/login" 
-                    state={{
-                        message: "You must log in first",
-                        from: location.pathname
-                    }} 
-                    replace
-                />
-            )
-        } else {
-            setLoading(false)
-            return <Outlet />
-        }
+    if(!isLoggedIn) {
+        return (
+            <Navigate 
+                to="/login" 
+                state={{
+                    message: "You must log in first",
+                    from: location.pathname
+                }} 
+                replace
+            />
+        )
+    } else {
+        return <Outlet />
     }
-
-    React.useEffect(()=> {
-        getStatus()
-    },[loading])
-
-    return (
-        <>
-            { loading && <h1>Loading</h1>  }
-        </>
-    )
 }
