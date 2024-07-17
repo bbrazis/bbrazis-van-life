@@ -1,4 +1,6 @@
 const userAuth = 'https://x8ki-letl-twmt.n7.xano.io/api:-QKB4H52'
+const vanApi = 'https://x8ki-letl-twmt.n7.xano.io/api:qP2FTqNA'
+const hostApi = 'https://x8ki-letl-twmt.n7.xano.io/api:M9VwSGvP'
 
 export function getCookie(cookieName) {
     const name = `${cookieName}=`
@@ -24,7 +26,7 @@ export function setCookie(cookieName, cookieValue, exdays) {
 }
 
 export async function getVans(id) {
-    const url = id ? `/api/vans/${id}` : "/api/vans"
+    const url = id ? `${vanApi}/vans/${id}` : `${vanApi}/vans`
     const res = await fetch(url)
     if (!res.ok) {
         throw {
@@ -34,12 +36,21 @@ export async function getVans(id) {
         }
     }
     const data = await res.json()
-    return data.vans
+    return data
 }
 
 export async function getHostVans(id) {
-    const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
-    const res = await fetch(url)
+    const token = getCookie('login')
+    const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
+    const options = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const res = await fetch(url, options)
     if (!res.ok) {
         throw {
             message: "Failed to fetch vans",
@@ -48,7 +59,7 @@ export async function getHostVans(id) {
         }
     }
     const data = await res.json()
-    return data.vans
+    return data
 }
 
 export async function loginUser(creds) {
