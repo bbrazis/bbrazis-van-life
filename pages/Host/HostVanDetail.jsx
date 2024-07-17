@@ -1,5 +1,6 @@
 import React from "react"
 import { useParams, Link, Outlet, NavLink } from "react-router-dom"
+import { getHostVans } from "../../api"
 
 export default function HostVanDetail() {
     const { id } = useParams()
@@ -11,9 +12,7 @@ export default function HostVanDetail() {
     }
 
     React.useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => setCurrentVan(data.vans))
+        console.log(getHostVans(id))
     }, [])
 
     if (!currentVan) {
