@@ -6,7 +6,10 @@ export default function HostVans() {
     const [vans, setVans] = React.useState([])
 
     React.useEffect(() => {
-        console.log(getHostVans())
+        const data = getHostVans()
+        if(data){
+            setVans(data)
+        }
     }, [])
 
     const hostVansEls = vans.map(van => (
