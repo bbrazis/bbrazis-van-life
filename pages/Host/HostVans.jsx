@@ -4,11 +4,12 @@ import { getHostVans } from "../../api"
 
 export default function HostVans() {
     const [vans, setVans] = React.useState([])
-
+    const data = getHostVans()
     React.useEffect(() => {
-        const data = getHostVans()
-        if(data){
-            setVans(data)
+        async () => {
+            if(data){
+                console.log(data)
+            }
         }
     }, [])
 
