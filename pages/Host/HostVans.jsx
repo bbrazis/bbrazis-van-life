@@ -22,7 +22,7 @@ export default function HostVans() {
         loadVans()
     }, [])
 
-    const hostVansEls = vans.map(van => (
+    const hostVansEls = vans?.map(van => (
         <Link
             to={van.id}
             key={van.id}
