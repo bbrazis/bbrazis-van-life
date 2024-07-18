@@ -14,7 +14,7 @@ export default function VanDetail() {
     const type = location.state?.type || "all"
 
     React.useEffect(()=>{
-        async function loadVans(){
+        async function loadVan(){
             setLoading(true)
             try {
                 const data = await getVans(id)
@@ -26,7 +26,7 @@ export default function VanDetail() {
             }
         }
         
-        loadVans
+        loadVan()
     },[id])
 
     if(loading) {
@@ -44,7 +44,7 @@ export default function VanDetail() {
             </section>
         )
     }
-    
+
     return (
         <div className="van-detail-container">
             <Link
