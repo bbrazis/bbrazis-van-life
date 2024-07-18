@@ -33,7 +33,7 @@ export default function HostVanDetail() {
 
     if (loading) {
         return (
-            <section>
+            <section className="loader-box">
                 <Loader />
             </section>
         )
