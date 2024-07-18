@@ -2,9 +2,9 @@ const userAuth = 'https://x8ki-letl-twmt.n7.xano.io/api:-QKB4H52'
 const vanApi = 'https://x8ki-letl-twmt.n7.xano.io/api:qP2FTqNA'
 const hostApi = 'https://x8ki-letl-twmt.n7.xano.io/api:M9VwSGvP'
 
-export function getCookie(cookieName) {
+export async function getCookie(cookieName) {
     const name = `${cookieName}=`
-    const decodedCookie = decodeURIComponent(document.cookie)
+    const decodedCookie = await decodeURIComponent(document.cookie)
     console.log(decodedCookie)
     const cookieArr = decodedCookie.split(';')
     for(let i = 0; i < cookieArr.length; i++){
