@@ -39,11 +39,19 @@ export default function HostVans() {
     ))
 
     if (loading) {
-        return <h1>Loading...</h1>
+        return (
+            <section>
+                <h1>Loading...</h1>
+            </section>
+        )
     }
 
     if (error) {
-        return <h1>There was an error: {error.message}</h1>
+        return (
+            <section>
+                <h1>There was an error: {error.message}</h1>
+            </section>
+        )
     }
     return (
         <section>
