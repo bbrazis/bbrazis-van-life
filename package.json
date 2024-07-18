@@ -1,6 +1,7 @@
 {
-  "name": "Scrim-s04sl18",
-  "description": "https://v2.scrimba.com/the-frontend-developer-career-path-c0j/~0122",
+  "name": "BBrazis Van Life Project",
+  "description": "Scrimba Project",
+  "homepage": ".",
   "scripts": {
     "start": "vite",
     "dev": "vite",
