@@ -6,7 +6,7 @@ export async function getCookie(cookieName) {
     const name = `${cookieName}=`
     const decodedCookie = await decodeURIComponent(document.cookie)
     const cookieArr = decodedCookie.split(';')
-    
+
     for(let i = 0; i < cookieArr.length; i++){
         let currentCookie = cookieArr[i]
         while (cookieName.charAt(0) === ' ') {
@@ -41,25 +41,28 @@ export async function getVans(id) {
 
 export async function getHostVans(id) {
     const token = getCookie('login')
-    const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
-    const options = {
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
+    console.log(token)
+    if(token){
+        const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
+        const options = {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
         }
-    }
-
-    const res = await fetch(url, options)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: res.statusText,
-            status: res.status
+    
+        const res = await fetch(url, options)
+        if (!res.ok) {
+            throw {
+                message: "Failed to fetch vans",
+                statusText: res.statusText,
+                status: res.status
+            }
         }
+        const data = await res.json()
+        return data
     }
-    const data = await res.json()
-    return data
 }
 
 export async function loginUser(creds) {
