@@ -41,7 +41,7 @@ export default function HostVans() {
 
     if (loading) {
         return (
-            <section>
+            <section className="loader-box">
                 <Loader />
             </section>
         )
