@@ -10,7 +10,7 @@ export default function Vans() {
     const [error, setError] = React.useState(null)
     
     const typeFilter = searchParams.get("type")
-    console.log(searchParams)
+    
     React.useEffect(()=>{
         async function loadVans(){
             setLoading(true)
