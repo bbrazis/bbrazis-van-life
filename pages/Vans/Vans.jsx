@@ -10,7 +10,7 @@ export default function Vans() {
     const [error, setError] = React.useState(null)
     
     const typeFilter = searchParams.get("type")
-
+    console.log(searchParams)
     React.useEffect(()=>{
         async function loadVans(){
             setLoading(true)
@@ -75,17 +75,17 @@ export default function Vans() {
         <div className="van-list-container">
             <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons">
-            <button
+                <button
                     onClick={() => handleFilterChange("type", "simple")}
-                    className={`van-type simple${typeFilter === "simple" ? " selected":null}`}
+                    className={`van-type simple${typeFilter === "simple" ? " selected": ""}`}
                 >Simple</button>
                 <button
                     onClick={() => handleFilterChange("type", "luxury")}
-                    className={`van-type luxury${typeFilter === "luxury" ? " selected":null}`}
+                    className={`van-type luxury${typeFilter === "luxury" ? " selected": ""}`}
                 >Luxury</button>
                 <button
                     onClick={() => handleFilterChange("type", "rugged")}
-                    className={`van-type rugged${typeFilter === "rugged" ? " selected":null}`}
+                    className={`van-type rugged${typeFilter === "rugged" ? " selected": ""}`}
                 >Rugged</button>
 
                 {typeFilter ? (
