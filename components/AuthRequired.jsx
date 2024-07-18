@@ -7,10 +7,16 @@ export default function AuthRequired() {
     const isLoggedIn = getCookie('login')
     const location = useLocation()
     
-    React.useEffect(()=>{
-        if(!loaded){
-            if(!isLoggedIn) {
-                return (
+    let output = 
+
+    React.useEffect(()=> {
+        setLoaded(true)
+    },[loaded])
+
+    return (
+        <>
+            { !loaded && <div className="loader" aria-live="assertive"></div> }
+            { loaded && !isLoggedIn ? (
                     <Navigate 
                         to="/login" 
                         state={{
@@ -19,15 +25,8 @@ export default function AuthRequired() {
                         }} 
                         replace
                     />
-                )
-            } else {
-                return <Outlet />
+                ) : <Outlet />
             }
-        }
-        setLoaded(true)
-    },[loaded])
-
-    return (
-        <div className="loader" aria-live="assertive"></div>
+        </>
     )
 }
