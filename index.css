@@ -795,3 +795,12 @@ img.graph {
 @keyframes spin {
     to { transform: rotate(-360deg) translateY(var(--y)); }
 }
+
+.loader-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
