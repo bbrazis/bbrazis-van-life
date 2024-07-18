@@ -12,7 +12,7 @@ export default function VanDetail() {
     const location = useLocation()
     const search = location.state?.search || ""
     const type = location.state?.type || "all"
-
+    console.log(location)
     React.useEffect(()=>{
         async function loadVan(){
             setLoading(true)
