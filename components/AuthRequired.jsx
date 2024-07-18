@@ -6,8 +6,6 @@ export default function AuthRequired() {
     const [loaded, setLoaded] = React.useState(false)
     const isLoggedIn = getCookie('login')
     const location = useLocation()
-    
-    console.log(isLoggedIn)
 
     React.useEffect(()=> {
         setTimeout(setLoaded(true), 500)
