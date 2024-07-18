@@ -31,7 +31,7 @@ export default function VanDetail() {
 
     if(loading) {
         return (
-            <section>
+            <section className="loader-box">
                 <Loader />
             </section>
         )
