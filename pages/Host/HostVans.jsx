@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { getHostVans } from "../../api"
+import Loader from "../../components/Loader"
 
 export default function HostVans() {
     const [vans, setVans] = React.useState([])
@@ -41,7 +42,7 @@ export default function HostVans() {
     if (loading) {
         return (
             <section>
-                <h1>Loading...</h1>
+                <Loader />
             </section>
         )
     }
@@ -64,7 +65,7 @@ export default function HostVans() {
                         </section>
 
                     ) : (
-                            <h2>Loading...</h2>
+                            <Loader />
                         )
                 }
             </div>

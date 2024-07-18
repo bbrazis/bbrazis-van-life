@@ -1,6 +1,7 @@
 import React from "react"
 import { Outlet, Navigate, useLocation, redirect } from "react-router-dom"
 import { getCookie } from "../api"
+import Loader from "./Loader"
 
 export default function AuthRequired() {
     const [loaded, setLoaded] = React.useState(false)
@@ -13,7 +14,7 @@ export default function AuthRequired() {
 
     return (
         <>
-            { !loaded && <div className="loader" aria-live="assertive"></div> }
+            { !loaded && <Loader /> }
             { loaded && !isLoggedIn ? (
                     <Navigate 
                         to="/login" 
