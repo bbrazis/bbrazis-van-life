@@ -40,7 +40,7 @@ export async function getVans(id) {
 }
 
 export async function getHostVans(id) {
-    const token = getCookie('login')
+    const token = await getCookie('login')
     console.log(token)
     if(token){
         const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
