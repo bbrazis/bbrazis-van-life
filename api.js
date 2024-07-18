@@ -41,28 +41,25 @@ export async function getVans(id) {
 
 export async function getHostVans(id) {
     const token = await getCookie('login')
-    
-    if(token != undefined){
-        const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
-        const options = {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-            }
+    const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
+    const options = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
         }
-    
-        const res = await fetch(url, options)
-        if (!res.ok) {
-            throw {
-                message: "Failed to fetch vans",
-                statusText: res.statusText,
-                status: res.status
-            }
-        }
-        const data = await res.json()
-        return data
     }
+
+    const res = await fetch(url, options)
+    if (!res.ok) {
+        throw {
+            message: "Failed to fetch vans",
+            statusText: res.statusText,
+            status: res.status
+        }
+    }
+    const data = await res.json()
+    return data
 }
 
 export async function loginUser(creds) {
