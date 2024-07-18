@@ -57,7 +57,7 @@ export default function Vans() {
 
     if(loading) {
         return (
-            <section>
+            <section className="loader-box">
                 <Loader />
             </section>
         )
