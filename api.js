@@ -15,7 +15,6 @@ export function getCookie(cookieName) {
             return currentCookie.substring(name.length, currentCookie.length)
         }
     }
-    return ""
 }
 
 export function setCookie(cookieName, cookieValue, exdays) {
