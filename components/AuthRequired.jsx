@@ -10,7 +10,7 @@ export default function AuthRequired() {
     let output = 
 
     React.useEffect(()=> {
-        setLoaded(true)
+        setTimeout(setLoaded(true), 500)
     },[loaded])
 
     return (
