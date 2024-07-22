@@ -12,10 +12,13 @@ export default function AuthRequired() {
         setLoaded(true)
     },[loaded])
 
+    if(!loaded){
+        return <Loader />
+    }
+
     return (
         <>
-            { !loaded && <Loader /> }
-            { loaded && !isLoggedIn ? (
+            { !isLoggedIn ? (
                     <Navigate 
                         to="/login" 
                         state={{
