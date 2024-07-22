@@ -15,11 +15,11 @@ export default function AuthRequired() {
             setloading(true)
             try {
                 const data = await checkAuth()
-                if(data.loggedIn){
-                    console.log('user is logged in, continue')
+                if(data?.loggedIn){
+                    console.log('user is logged in, continue: ', data)
                     setVerified(true)
                 } else{
-                    console.log('user not logged in, go to login')
+                    console.log('user not logged in, go to login: ', data)
                 }
             } catch(err) {
                 setError(err)
@@ -50,7 +50,7 @@ export default function AuthRequired() {
             />
         )
     }
-    
+
     //No Error, but not verified send to login
     if(!verified) {
         return (
