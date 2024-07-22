@@ -105,6 +105,10 @@ export async function checkAuth() {
                 userId: data.id,
                 userEmail: data.email
             }
+        } else {
+            return {
+                loggedIn: false
+            }
         }
     } else {
         return {
