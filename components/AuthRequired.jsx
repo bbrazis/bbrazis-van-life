@@ -10,11 +10,16 @@ export default function AuthRequired() {
     const isLoggedIn = getCookie('login') || null
     const location = useLocation()
 
+    function timeout(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
     React.useEffect(()=> {
         async function checkLogin(){
             setloading(true)
             try {
                 const data = await checkAuth()
+                timeout(500)
                 if(data?.loggedIn){
                     console.log('user is logged in, continue: ', data)
                     setVerified(true)
