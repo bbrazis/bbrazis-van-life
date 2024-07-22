@@ -9,7 +9,7 @@ export default function AuthRequired() {
     const location = useLocation()
 
     React.useEffect(()=> {
-        setTimeout(setLoaded(true), 5000)
+        setLoaded(true)
     },[loaded])
 
     return (
