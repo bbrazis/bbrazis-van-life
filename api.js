@@ -41,7 +41,6 @@ export async function getVans(id) {
 
 export async function getHostVans(id) {
     const token = await getCookie('login')
-    console.log(token)
     const url = id ? `${hostApi}/host/vans/${id}` : `${hostApi}/host/vans`
     const options = {
         method: "GET",
