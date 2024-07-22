@@ -32,7 +32,7 @@ export default function AuthRequired() {
             } catch(err) {
                 setError(err)
             } finally {
-                //
+                setloading(false)
             }
         }
 
@@ -40,7 +40,7 @@ export default function AuthRequired() {
     },[])
 
     //Load state
-    if(!loading){
+    if(loading){
         return <Loader />
     }
 
