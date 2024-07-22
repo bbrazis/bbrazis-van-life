@@ -32,7 +32,7 @@ export default function AuthRequired() {
             } catch(err) {
                 setError(err)
             } finally {
-                setloading(false)
+                //
             }
         }
 
