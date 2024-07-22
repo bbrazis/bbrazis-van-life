@@ -1,34 +1,70 @@
 import React from "react"
 import { Outlet, Navigate, useLocation, redirect } from "react-router-dom"
-import { getCookie } from "../api"
+import { getCookie, checkAuth } from "../api"
 import Loader from "./Loader"
 
 export default function AuthRequired() {
-    const [loaded, setLoaded] = React.useState(false)
-    const isLoggedIn = getCookie('login')
+    const [loading, setloading] = React.useState(false)
+    const [error, setError] = React.useState(null)
+    const [verified, setVerified] = React.useState(false)
+    const isLoggedIn = getCookie('login') || null
     const location = useLocation()
 
     React.useEffect(()=> {
-        setLoaded(true)
-    },[loaded])
+        async function checkLogin(){
+            setloading(true)
+            try {
+                const data = await checkAuth()
+                if(data.loggedIn){
+                    console.log('user is logged in, continue')
+                    setVerified(true)
+                } else{
+                    console.log('user not logged in, go to login')
+                }
+            } catch(err) {
+                setError(err)
+            } finally {
+                setloading(false)
+            }
+        }
 
-    if(!loaded){
+        checkLogin()
+    },[])
+
+    //Load state
+    if(!loading){
         return <Loader />
     }
 
-    return (
-        <>
-            { !isLoggedIn ? (
-                    <Navigate 
-                        to="/login" 
-                        state={{
-                            message: "You must log in first",
-                            from: location.pathname
-                        }} 
-                        replace
-                    />
-                ) : <Outlet />
-            }
-        </>
-    )
+    //Error State and send to login
+    if(error){
+        console.log(`There was an error: ${error}`)
+        return (
+            <Navigate
+                to="login"
+                state={{
+                    message: "There was an error with your login, please try again.",
+                    from: location.pathname
+                }}
+                replace
+            />
+        )
+    }
+    
+    //No Error, but not verified send to login
+    if(!verified) {
+        return (
+            <Navigate 
+                to="/login" 
+                state={{
+                    message: "You must log in first",
+                    from: location.pathname
+                }} 
+                replace
+            />
+        )
+    }
+
+    // Verified and may continue
+    return <Outlet />
 }
