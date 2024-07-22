@@ -2,6 +2,10 @@ const userAuth = 'https://x8ki-letl-twmt.n7.xano.io/api:-QKB4H52'
 const vanApi = 'https://x8ki-letl-twmt.n7.xano.io/api:qP2FTqNA'
 const hostApi = 'https://x8ki-letl-twmt.n7.xano.io/api:M9VwSGvP'
 
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 export async function getCookie(cookieName) {
     const name = `${cookieName}=`
     const decodedCookie = await decodeURIComponent(document.cookie)
@@ -97,7 +101,9 @@ export async function checkAuth() {
     if(token){
         const res = await fetch(`${userAuth}/auth/me`, options)
         const data = await res.json()
-    
+        
+        timeout(500)
+        
         if(data.id) {
             return {
                 loggedIn: true,
