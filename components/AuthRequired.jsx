@@ -7,7 +7,7 @@ export default function AuthRequired() {
     const [loading, setloading] = React.useState(false)
     const [error, setError] = React.useState(null)
     const [verified, setVerified] = React.useState(false)
-    const isLoggedIn = getCookie('login') || null
+    const [tokenStatus, setTokenStatus] = React.useState(getCookie('login') || null)
     const location = useLocation()
 
     function timeout(ms) {
@@ -18,14 +18,17 @@ export default function AuthRequired() {
         async function checkLogin(){
             setloading(true)
             try {
-                const data = await checkAuth()
+                // const data = await checkAuth()
                 timeout(500)
-                if(data?.loggedIn){
-                    console.log('user is logged in, continue: ', data)
+                if(tokenStatus != null){
                     setVerified(true)
-                } else{
-                    console.log('user not logged in, go to login: ', data)
                 }
+                // if(data?.loggedIn){
+                //     console.log('user is logged in, continue: ', data)
+                //     setVerified(true)
+                // } else{
+                //     console.log('user not logged in, go to login: ', data)
+                // }
             } catch(err) {
                 setError(err)
             } finally {
