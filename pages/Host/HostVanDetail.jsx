@@ -57,16 +57,20 @@ export default function HostVanDetail() {
 
             <div className="host-van-detail-layout-container">
                 <div className="host-van-detail">
-                    <img src={currentVan.imageUrl} alt={`an image of ${currentVan.name}`} />
-                    <div className="host-van-detail-info-text">
-                        <i
-                            className={`van-type van-type-${currentVan.type}`}
-                        >
-                            {currentVan.type}
-                        </i>
-                        <h3>{currentVan.name}</h3>
-                        <h4>${currentVan.price}/day</h4>
-                    </div>
+                    {   currentVan &&
+                        <>
+                            <img src={currentVan.imageUrl} alt={`an image of ${currentVan.name}`} />
+                            <div className="host-van-detail-info-text">
+                                <i
+                                    className={`van-type van-type-${currentVan.type}`}
+                                >
+                                    {currentVan.type}
+                                </i>
+                                <h3>{currentVan.name}</h3>
+                                <h4>${currentVan.price}/day</h4>
+                            </div>
+                        </>
+                    }
                 </div>
                 <nav className="host-van-detail-nav">
                     <NavLink
