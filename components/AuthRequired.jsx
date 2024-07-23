@@ -4,8 +4,8 @@ import { getCookie, checkAuth } from "../api"
 import Loader from "./Loader"
 
 export default function AuthRequired() {
-    const [loading, setloading] = React.useState(false)
-    const [error, setError] = React.useState(null)
+    const [loading, setloading] = React.useState(true)
+    // const [error, setError] = React.useState(null)
     const [verified, setVerified] = React.useState(false)
     const [tokenStatus, setTokenStatus] = React.useState(getCookie('login') || null)
     const location = useLocation()
@@ -15,12 +15,11 @@ export default function AuthRequired() {
     }
 
     React.useEffect(()=> {
-        setloading(true)
         if(tokenStatus != null){
             setVerified(true)
         }
         setloading(false)
-    },[])
+    },[loading])
 
     if (loading){
         //Load state
