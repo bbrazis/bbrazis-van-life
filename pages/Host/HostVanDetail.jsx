@@ -19,9 +19,10 @@ export default function HostVanDetail() {
         async function loadVan() {
             setLoading(true)
             try {
-                const data = await getHostVans(id)
-                console.log(data)
-                setCurrentVan(data)
+                if(currentVan.id != id){
+                    const data = await getHostVans(id)
+                    setCurrentVan(data)
+                }
             } catch(err) {
                 setError(err)
             } finally {
