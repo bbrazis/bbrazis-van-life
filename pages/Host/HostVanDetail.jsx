@@ -8,7 +8,7 @@ export default function HostVanDetail() {
     const [currentVan, setCurrentVan] = React.useState(null)
     const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
-    console.log(id)
+    
     const activeStyles = {
         fontWeight: 'bold',
         textDecoration: 'underline',
