@@ -58,7 +58,7 @@ export default function HostVanDetail() {
 
             <div className="host-van-detail-layout-container">
                 <div className="host-van-detail">
-                    {   currentVan &&
+                    {   currentVan?.name &&
                         <>
                             <img src={currentVan.imageUrl} alt={`an image of ${currentVan.type}`} />
                             <div className="host-van-detail-info-text">
