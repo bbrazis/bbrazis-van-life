@@ -60,14 +60,14 @@ export default function HostVanDetail() {
                 <div className="host-van-detail">
                     {   currentVan &&
                         <>
-                            <img src={currentVan.imageUrl} alt={`an image of ${currentVan.name}`} />
+                            <img src={currentVan.imageUrl} alt={`an image of ${currentVan.type}`} />
                             <div className="host-van-detail-info-text">
                                 <i
                                     className={`van-type van-type-${currentVan.type}`}
                                 >
                                     {currentVan.type}
                                 </i>
-                                <h3>{currentVan.name}</h3>
+                                <h3>{currentVan.type}</h3>
                                 <h4>${currentVan.price}/day</h4>
                             </div>
                         </>
