@@ -47,7 +47,7 @@ export default function HostVanDetail() {
             </section>
         )
     }
-    
+    console.log(currentVan)
     return (
         <section>
             <Link
