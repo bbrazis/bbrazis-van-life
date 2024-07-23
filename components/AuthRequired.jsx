@@ -10,10 +10,6 @@ export default function AuthRequired() {
     const [tokenStatus, setTokenStatus] = React.useState(getCookie('login') || null)
     const location = useLocation()
 
-    function timeout(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms))
-    }
-
     React.useEffect(()=> {
         if(tokenStatus != null){
             setVerified(true)
