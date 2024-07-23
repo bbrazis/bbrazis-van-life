@@ -15,52 +15,18 @@ export default function AuthRequired() {
     }
 
     React.useEffect(()=> {
-        async function checkLogin(){
-            setloading(true)
-            try {
-                // const data = await checkAuth()
-                timeout(500)
-                if(tokenStatus != null){
-                    setVerified(true)
-                }
-                // if(data?.loggedIn){
-                //     console.log('user is logged in, continue: ', data)
-                //     setVerified(true)
-                // } else{
-                //     console.log('user not logged in, go to login: ', data)
-                // }
-            } catch(err) {
-                setError(err)
-            } finally {
-                setloading(false)
-            }
+        setloading(true)
+        if(tokenStatus != null){
+            setVerified(true)
         }
-
-        checkLogin()
+        setloading(false)
     },[])
 
-    //Load state
-    if(loading){
+    if (loading){
+        //Load state
         return <Loader />
-    }
-
-    //Error State and send to login
-    if(error){
-        console.log(`There was an error: ${error}`)
-        return (
-            <Navigate
-                to="login"
-                state={{
-                    message: "There was an error with your login, please try again.",
-                    from: location.pathname
-                }}
-                replace
-            />
-        )
-    }
-
-    //No Error, but not verified send to login
-    if(!verified) {
+    } else if (!verified) {
+        // Not Verified state
         return (
             <Navigate 
                 to="/login" 
@@ -71,8 +37,8 @@ export default function AuthRequired() {
                 replace
             />
         )
+    } else if (verified) {
+        // Verified state
+        return <Outlet />
     }
-
-    // Verified and may continue
-    return <Outlet />
 }
